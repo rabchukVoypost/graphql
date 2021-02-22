@@ -3,7 +3,7 @@ const {gql} = require("apollo-server-express")
 
 const typeDefs = gql`
     type Query {
-        trips(limit:Int):[Trip!]!
+        trips(offset:Int,limit:Int):[Trip!]!
     }
     
     type Trip {

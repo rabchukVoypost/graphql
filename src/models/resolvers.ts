@@ -27,8 +27,10 @@ type TripArgsType ={
 const resolvers = {
     Query:{
         trips: async (_:any, args:TripArgsType):Promise<TripType[]> => {
-            let trips = await Trip.find().limit(args.limit)
-            return  trips
+            let trips = await Trip.find()
+            args.offset ? trips = await Trip.find({_id:{$gt:trips[args.offset-1].id}}).limit(args.limit)
+                : trips = await Trip.find().limit(args.limit)
+            return trips
         }
     },
     Mutation: {
