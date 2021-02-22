@@ -3,7 +3,7 @@ const {gql} = require("apollo-server-express")
 
 const typeDefs = gql`
     type Query {
-        trips(offset:Int, limit: Int):[Trip!]!
+        trips(limit:Int):[Trip!]!
     }
     
     type Trip {
@@ -12,7 +12,6 @@ const typeDefs = gql`
      to:String!
     }
     
-  
     input CreateTripInput{
      fromPlaceLongitude:Float!
      fromPlaceLatitude:Float!
